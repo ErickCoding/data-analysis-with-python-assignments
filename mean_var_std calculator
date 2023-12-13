@@ -1,0 +1,13 @@
+def calculate(x):
+    calc_dict={"mean": np.mean, "variance": np.var, "std": np.std ,"max": np.max ,"min": np.min, "sum": np.sum}
+    for term in calc_dict:
+        calc_dict[term]=[calc_dict[term](x, axis=0).tolist(), calc_dict[term](x, axis=1).tolist(), calc_dict[term](x.flatten()).tolist()]
+    for key,value in calc_dict.items():
+        print(key,value)
+
+#x=np.array([[0,1,2],[3,4,5],[6,7,8]])
+x=input("Please enter 9 numbers seperated by a space")
+if len(x.split(" "))!= 9:
+    x=input("Please enter 9 numbers seperated by a space")
+else:
+    calculate(np.array(list(map(int,x.split(" ")))).reshape(3,3))
